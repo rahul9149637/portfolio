@@ -27,3 +27,5 @@ _reference/
 *.sln
 *.sw?
 *.env
+
+.vercel
