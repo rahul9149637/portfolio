@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="C++">
+  <rect width="96" height="96" rx="20" fill="#0f172a"/>
+  <path d="M48 10 80 28v40L48 86 16 68V28L48 10z" fill="#2563eb"/>
+  <path d="M48 19 71 32v29L48 74 25 61V32L48 19z" fill="#1d4ed8"/>
+  <text x="43" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#f8fafc">C</text>
+  <path d="M60 40v20M50 50h20M78 40v20M68 50h20" stroke="#bfdbfe" stroke-width="4" stroke-linecap="round"/>
+</svg>
