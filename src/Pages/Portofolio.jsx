@@ -104,23 +104,37 @@ function a11yProps(index) {
 
 const skillGroups = [
   {
-    title: "Programming Languages",
+    title: "AI & Machine Learning",
     items: [
-      { icon: "html.svg", language: "HTML" },
-      { icon: "css.svg", language: "CSS" },
-      { icon: "java.svg", language: "Java" },
-      { icon: "mongodb.svg", language: "MongoDB" },
-      { icon: "python.svg", language: "Python" },
-      { icon: "cpp.svg", language: "C++" },
+      { icon: "", language: "Machine Learning" },
+      { icon: "", language: "Deep Learning" },
+      { icon: "", language: "Neural Networks" },
+      { icon: "", language: "Image Classification" },
     ],
   },
   {
-    title: "Tools",
+    title: "LLM & Agents",
     items: [
-      { icon: "antigravity.svg", language: "Antigravity" },
-      { icon: "codex.svg", language: "Codex" },
+      { icon: "", language: "LangChain" },
+      { icon: "", language: "LangGraph" },
+    ],
+  },
+  {
+    title: "Data & Programming",
+    items: [
+      { icon: "python.svg", language: "Python" },
+      { icon: "", language: "SQL (MySQL)" },
+      { icon: "java.svg", language: "Java" },
+      { icon: "javascript.svg", language: "JavaScript / TypeScript" },
+    ],
+  },
+  {
+    title: "Frontend & System Design",
+    items: [
+      { icon: "reactjs.svg", language: "React" },
+      { icon: "", language: "Vite" },
+      { icon: "", language: "System Design" },
       { icon: "github.svg", language: "GitHub" },
-      { icon: "kiro.svg", language: "Kiro" },
     ],
   },
 ];
@@ -200,12 +214,11 @@ export default function FullWidthTabs() {
             backgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
           }}>
-            Portfolio Showcase
+          AI & Machine Learning Portfolio
           </span>
         </h2>
         <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2">
-          Explore my projects and technical expertise. 
-          Each section represents a milestone in my continuous learning path.
+          Explore AI projects, data skills, and web prototypes built while solving practical problems.
         </p>
       </div>
 

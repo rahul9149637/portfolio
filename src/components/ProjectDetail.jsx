@@ -14,6 +14,7 @@ import {
   Package,
   Cpu,
   Code,
+  BrainCircuit,
 } from "lucide-react";
 import Swal from "sweetalert2";
 import { toSlug } from "../utils/slug";
@@ -78,7 +79,7 @@ const ProjectStats = ({ project }) => {
             {techStackCount}
           </div>
           <div className="text-[10px] md:text-xs text-gray-400">
-            Total Teknologi
+            Technologies
           </div>
         </div>
       </div>
@@ -95,7 +96,7 @@ const ProjectStats = ({ project }) => {
             {featuresCount}
           </div>
           <div className="text-[10px] md:text-xs text-gray-400">
-            Fitur Utama
+            Key Features
           </div>
         </div>
       </div>
@@ -123,7 +124,6 @@ const ProjectDetails = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [project, setProject] = useState(null);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -138,7 +138,7 @@ const ProjectDetails = () => {
         ...selectedProject,
         Features: selectedProject.Features || [],
         TechStack: selectedProject.TechStack || [],
-        Github: selectedProject.Github || profile.socials.github,
+        Github: selectedProject.Github || "",
       };
       setProject(enhancedProject);
     }
@@ -247,32 +247,38 @@ const ProjectDetails = () => {
 
                 <ProjectStats project={project} />
 
-                <div className="flex flex-wrap gap-3 md:gap-4">
-                  <a
-                    href={project.Link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 text-blue-300 rounded-xl transition-all duration-300 border border-blue-500/20 hover:border-blue-500/40 backdrop-blur-xl overflow-hidden text-sm md:text-base"
-                  >
-                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-blue-600/10 to-purple-600/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
-                    <ExternalLink className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
-                    <span className="relative font-medium">Live Demo</span>
-                  </a>
+                {(project.Link || project.Github) && (
+                  <div className="flex flex-wrap gap-3 md:gap-4">
+                    {project.Link && (
+                      <a
+                        href={project.Link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-blue-600/10 to-purple-600/10 hover:from-blue-600/20 hover:to-purple-600/20 text-blue-300 rounded-xl transition-all duration-300 border border-blue-500/20 hover:border-blue-500/40 backdrop-blur-xl overflow-hidden text-sm md:text-base"
+                      >
+                        <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-blue-600/10 to-purple-600/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
+                        <ExternalLink className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
+                        <span className="relative font-medium">Live Demo</span>
+                      </a>
+                    )}
 
-                  <a
-                    href={project.Github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 text-purple-300 rounded-xl transition-all duration-300 border border-purple-500/20 hover:border-purple-500/40 backdrop-blur-xl overflow-hidden text-sm md:text-base"
-                    onClick={(e) =>
-                      !handleGithubClick(project.Github) && e.preventDefault()
-                    }
-                  >
-                    <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/10 to-pink-600/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
-                    <Github className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
-                    <span className="relative font-medium">Github</span>
-                  </a>
-                </div>
+                    {project.Github && (
+                      <a
+                        href={project.Github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative inline-flex items-center space-x-1.5 md:space-x-2 px-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-purple-600/10 to-pink-600/10 hover:from-purple-600/20 hover:to-pink-600/20 text-purple-300 rounded-xl transition-all duration-300 border border-purple-500/20 hover:border-purple-500/40 backdrop-blur-xl overflow-hidden text-sm md:text-base"
+                        onClick={(e) =>
+                          !handleGithubClick(project.Github) && e.preventDefault()
+                        }
+                      >
+                        <div className="absolute inset-0 translate-y-[100%] bg-gradient-to-r from-purple-600/10 to-pink-600/10 transition-transform duration-300 group-hover:translate-y-[0%]" />
+                        <Github className="relative w-4 h-4 md:w-5 md:h-5 group-hover:rotate-12 transition-transform" />
+                        <span className="relative font-medium">GitHub</span>
+                      </a>
+                    )}
+                  </div>
+                )}
 
                 <div className="space-y-4 md:space-y-6">
                   <h3 className="text-lg md:text-xl font-semibold text-white/90 mt-[3rem] md:mt-0 flex items-center gap-2 md:gap-3">
@@ -296,12 +302,18 @@ const ProjectDetails = () => {
               <div className="space-y-6 md:space-y-10 animate-slideInRight">
                 <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl group">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <img
-                    src={project.Img}
-                    alt={project.Title}
-                    className="w-full object-cover transform transition-transform duration-700 will-change-transform group-hover:scale-105"
-                    onLoad={() => setIsImageLoaded(true)}
-                  />
+                  {project.Img ? (
+                    <img
+                      src={project.Img}
+                      alt={project.Title}
+                      className="w-full object-cover transform transition-transform duration-700 will-change-transform group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="aspect-video bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 flex flex-col items-center justify-center gap-4 text-center px-6">
+                      <BrainCircuit className="w-16 h-16 text-purple-300" />
+                      <span className="text-lg font-medium text-purple-100">AI & Machine Learning Project</span>
+                    </div>
+                  )}
                   <div className="absolute inset-0 border-2 border-white/0 group-hover:border-white/10 transition-colors duration-300 rounded-2xl" />
                 </div>
 

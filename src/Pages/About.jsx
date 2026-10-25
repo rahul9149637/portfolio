@@ -1,5 +1,5 @@
 import React, { useEffect, memo, useMemo } from "react"
-import { FileText, Code, Globe, ArrowUpRight, Sparkles, UserCheck } from "lucide-react"
+import { FileText, Code, ArrowUpRight, Sparkles, UserCheck } from "lucide-react"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { profile, projects } from "../data/profile";
@@ -22,7 +22,7 @@ const Header = memo(() => (
       data-aos-duration="800"
     >
       <Sparkles className="w-5 h-5 text-purple-400" />
-      Transforming ideas into digital experiences
+      Turning real problems into practical AI solutions
       <Sparkles className="w-5 h-5 text-purple-400" />
     </p>
   </div>
@@ -122,20 +122,7 @@ const StatCard = memo(({ icon: Icon, color, value, label, description, animation
 ));
 
 const AboutPage = () => {
-  // Memoized calculations
-  const { totalProjects, YearExperience } = useMemo(() => {
-    const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
-    
-    const startDate = new Date("2021-11-06");
-    const today = new Date();
-    const experience = today.getFullYear() - startDate.getFullYear() -
-      (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
-
-    return {
-      totalProjects: storedProjects.length || projects.length,
-      YearExperience: experience
-    };
-  }, []);
+  const totalProjects = projects.length;
 
   // Optimized AOS initialization
   useEffect(() => {
@@ -167,19 +154,19 @@ const AboutPage = () => {
       icon: Code,
       color: "from-[#6366f1] to-[#a855f7]",
       value: totalProjects,
-      label: "Total Projects",
-      description: "Innovative web solutions crafted",
+      label: "AI Projects",
+      description: "Social-impact products and prototypes",
       animation: "fade-right",
     },
     {
-      icon: Globe,
+      icon: UserCheck,
       color: "from-[#6366f1] to-[#a855f7]",
-      value: YearExperience,
-      label: "Years of Experience",
-      description: "Continuous learning journey",
+      value: "3rd",
+      label: "Year B.Tech AIML",
+      description: "Learning AI, ML, and data science",
       animation: "fade-left",
     },
-  ], [totalProjects, YearExperience]);
+  ], [totalProjects]);
 
   return (
     <div
@@ -217,8 +204,7 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-                I am a frontend-focused developer who enjoys turning ideas into useful, polished web experiences.
-                My work focuses on responsive layouts, clean interactions, and practical interfaces that are easy to use.
+                I'm a third-year B.Tech student in Artificial Intelligence and Machine Learning. I take ideas from rough problem statements to working products people can use. My work focuses on social-impact projects that help farmers make better decisions, improve land-record digitization, and sort waste more efficiently. I compete in hackathons, including Smart India Hackathon 2026, where I work on real government problem statements. I'm strengthening my skills in Data Science with Python, SQL, and Java, and I'm looking for internships and entry-level roles in AI and machine learning.
                   </p>
 
                {/* Quote Section */}
@@ -239,7 +225,7 @@ const AboutPage = () => {
         </div>
         
         <blockquote className="text-gray-300 text-center lg:text-left italic font-medium text-sm relative z-10 pl-6">
-          "Building useful things with clarity, curiosity, and steady improvement."
+          "Turning real problems into practical AI solutions."
         </blockquote>
       </div>
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ExternalLink, ArrowRight } from "lucide-react";
+import { BrainCircuit, ExternalLink, ArrowRight } from "lucide-react";
 import { toSlug } from "../utils/slug";
 
 const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
@@ -26,12 +26,19 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id }) => {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
 
         <div className="relative p-5 z-10">
-          <div className="relative overflow-hidden rounded-lg">
-            <img
-              src={Img}
-              alt={Title}
-              className="w-full h-full object-cover aspect-[16/8] transform group-hover:scale-105 transition-transform duration-500"
-            />
+          <div className="relative overflow-hidden rounded-lg aspect-[16/8]">
+            {Img ? (
+              <img
+                src={Img}
+                alt={Title}
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 border border-white/10 flex flex-col items-center justify-center gap-3 text-center px-6">
+                <BrainCircuit className="w-12 h-12 text-purple-300 group-hover:scale-110 transition-transform duration-500" />
+                <span className="text-sm font-medium text-purple-100">AI & Machine Learning Project</span>
+              </div>
+            )}
           </div>
 
           <div className="mt-4 space-y-3">

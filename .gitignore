@@ -29,3 +29,4 @@ _reference/
 *.env
 
 .vercel
+.npm-cache/

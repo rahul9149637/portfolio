@@ -133,7 +133,7 @@ const ContactPage = () => {
           data-aos-duration="1100"
           className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2"
         >
-          Have a project, question, or collaboration idea? Send me a message.
+          Have a problem that AI could help with? Let's talk.
         </p>
       </div>
 
@@ -152,7 +152,7 @@ const ContactPage = () => {
                   Contact
                 </h2>
                 <p className="text-gray-400">
-                  Want to discuss something? Send me a message and I will get back to you.
+                  Have an AI or machine-learning problem to discuss? Send me a message and I will get back to you.
                 </p>
               </div>
               <Share2 className="w-10 h-10 text-[#6366f1] opacity-50" />
